@@ -37,10 +37,12 @@ export class NativeLoggerSink {
                 }
             });
         this._helloSent = false;
+        this._hostUnavailable = false;
     }
 
     setEnabled(enabled) {
         this.enabled = !!enabled;
+        this._hostUnavailable = false;
         if (!this.enabled) {
             this._disconnect();
             return;
@@ -70,6 +72,7 @@ export class NativeLoggerSink {
     /** Eagerly open the native port (starts the host HTTP bridge). Safe to call often. */
     connect() {
         if (!this.enabled) return null;
+        this._hostUnavailable = false;
         return this._getPort();
     }
 
@@ -131,12 +134,18 @@ export class NativeLoggerSink {
 
     _getPort() {
         if (this._port) return this._port;
-        if (!this.runtime?.connectNative) return null;
+        if (!this.runtime?.connectNative || this._hostUnavailable) return null;
         try {
             const port = this.runtime.connectNative(this.hostName);
             port.onDisconnect?.addListener(() => {
+                // Consume runtime.lastError / port.error so Chrome marks it handled,
+                // preventing 'Unchecked runtime.lastError: Specified native messaging host not found.'
+                const lastError = this.runtime?.lastError || port?.error;
                 this._port = null;
                 this._helloSent = false;
+                if (lastError && /not found/i.test(lastError.message || '')) {
+                    this._hostUnavailable = true;
+                }
             });
             port.onMessage?.addListener((msg) => {
                 this._onHostMessage(msg);

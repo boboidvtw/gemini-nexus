@@ -15,7 +15,7 @@ describe('MCP tools view', () => {
                 toolMode: 'all',
                 enabledSet: new Set(),
             })
-        ).toBe('请先设置服务器地址以管理工具。');
+        ).toBe('請先設定伺服器位址以管理工具。');
 
         expect(
             getMcpToolsSummaryText({
@@ -24,7 +24,7 @@ describe('MCP tools view', () => {
                 toolMode: 'selected',
                 enabledSet: new Set(),
             })
-        ).toBe('尚未加载工具列表。点击“刷新工具列表”后选择要暴露的工具。');
+        ).toBe('尚未載入工具清單。點擊「重新整理工具清單」後選取要開放的工具。');
 
         expect(
             getMcpToolsSummaryText({
@@ -33,7 +33,7 @@ describe('MCP tools view', () => {
                 toolMode: 'selected',
                 enabledSet: new Set(['a']),
             })
-        ).toBe('模式：已选择。已暴露工具：1/2。');
+        ).toBe('模式：已選取。已開放工具：1/2。');
 
         setLanguagePreference('en');
     });
@@ -80,7 +80,7 @@ describe('MCP tools view', () => {
             onToolsChange: rerender,
         });
 
-        expect(summary.textContent).toBe('模式：已选择。已暴露工具：1/2。');
+        expect(summary.textContent).toBe('模式：已選取。已開放工具：1/2。');
         expect(list.querySelector('summary')?.textContent).toContain('browser');
         expect(list.querySelector('summary')?.textContent).toContain('1/2');
         expect(list.querySelectorAll('[style]').length).toBe(0);

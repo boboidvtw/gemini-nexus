@@ -45,7 +45,7 @@ async function notifyContextMenuFailure(tabId) {
         .executeScript({
             target: { tabId },
             func: showContextMenuFailureNotice,
-            args: ['Gemini Nexus 无法在当前页面启动，请刷新页面后重试。'],
+            args: ['Gemini Nexus 無法在當前頁面啟動，請重新整理頁面後重試。'],
         })
         .catch(() => {});
 }
@@ -77,13 +77,13 @@ function buildContextMenuItems() {
 
     const titles = {
         main: isZh ? 'Gemini Nexus' : 'Gemini Nexus',
-        ask: isZh ? '快速提问' : 'Quick Ask',
-        pageChat: isZh ? '与当前网页对话' : 'Chat with Page',
-        readPage: isZh ? '朗读当前网页' : 'Read page aloud',
-        readSelection: isZh ? '朗读选中内容' : 'Read selection aloud',
-        ocr: isZh ? 'OCR (文字提取)' : 'OCR (Extract Text)',
-        screenshotTranslate: isZh ? '截图翻译' : 'Screenshot Translate',
-        snip: isZh ? '区域截图 (Snip)' : 'Snip (Capture Area)',
+        ask: isZh ? '快速提問' : 'Quick Ask',
+        pageChat: isZh ? '與當前網頁對話' : 'Chat with Page',
+        readPage: isZh ? '朗讀當前網頁' : 'Read page aloud',
+        readSelection: isZh ? '朗讀選取內容' : 'Read selection aloud',
+        ocr: isZh ? 'OCR (文字擷取)' : 'OCR (Extract Text)',
+        screenshotTranslate: isZh ? '截圖翻譯' : 'Screenshot Translate',
+        snip: isZh ? '區域截圖 (Snip)' : 'Snip (Capture Area)',
     };
 
     const parentMenu = {

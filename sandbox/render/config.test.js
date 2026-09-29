@@ -53,8 +53,8 @@ describe('configureMarkdown', () => {
         const html = transformMarkdown('```json\n{"ok":true}\n```');
 
         expect(html).toContain('copy-code-btn');
-        expect(html).toContain('复制');
-        expect(html).toContain('aria-label="复制代码"');
+        expect(html).toContain('複製');
+        expect(html).toContain('aria-label="複製程式碼"');
         expect(html).toContain('{"ok":true}');
         setLanguagePreference('en');
     });

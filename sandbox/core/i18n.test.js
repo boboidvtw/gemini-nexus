@@ -23,8 +23,8 @@ describe('i18n translations', () => {
         }
 
         setLanguagePreference('zh');
-        expect(t('dataManagement')).toBe('数据管理');
-        expect(t('systemDefault')).toBe('跟随系统');
+        expect(t('dataManagement')).toBe('資料管理');
+        expect(t('systemDefault')).toBe('跟隨系統');
     });
 
     it('keeps locale key order aligned for easy review', () => {
@@ -34,11 +34,11 @@ describe('i18n translations', () => {
     it('localizes dynamic UI copy used outside data-i18n templates', () => {
         setLanguagePreference('zh');
 
-        expect(formatT('mcpSummarySelected', { mode: '已选择', count: 1, total: 2 })).toBe(
-            '模式：已选择。已暴露工具：1/2。'
+        expect(formatT('mcpSummarySelected', { mode: '已選取', count: 1, total: 2 })).toBe(
+            '模式：已選取。已開放工具：1/2。'
         );
-        expect(t('copyCode')).toBe('复制代码');
-        expect(t('screenCapture')).toBe('屏幕截图');
+        expect(t('copyCode')).toBe('複製程式碼');
+        expect(t('screenCapture')).toBe('螢幕截圖');
         expect(t('toolStatusRunning').replace('{name}', 'browser')).toBe('正在使用 browser...');
     });
 
@@ -50,10 +50,10 @@ describe('i18n translations', () => {
         expect(t('screenshotTranslatePrompt')).toContain('No text detected');
 
         setLanguagePreference('zh');
-        expect(t('ocrPrompt')).toContain('按阅读顺序');
-        expect(t('ocrPrompt')).toContain('未检测到文字');
-        expect(t('screenshotTranslatePrompt')).toContain('仅输出翻译结果');
-        expect(t('screenshotTranslatePrompt')).toContain('未检测到文字');
+        expect(t('ocrPrompt')).toContain('按閱讀順序');
+        expect(t('ocrPrompt')).toContain('未偵測到文字');
+        expect(t('screenshotTranslatePrompt')).toContain('僅輸出翻譯結果');
+        expect(t('screenshotTranslatePrompt')).toContain('未偵測到文字');
     });
 
     it('mirrors localized titles into aria labels for icon-only controls', () => {
@@ -66,9 +66,9 @@ describe('i18n translations', () => {
         applyTranslations();
 
         const [newChat, close] = document.querySelectorAll('button');
-        expect(newChat.title).toBe('新对话');
-        expect(newChat.getAttribute('aria-label')).toBe('新对话');
-        expect(close.title).toBe('关闭');
-        expect(close.getAttribute('aria-label')).toBe('关闭');
+        expect(newChat.title).toBe('新對話');
+        expect(newChat.getAttribute('aria-label')).toBe('新對話');
+        expect(close.title).toBe('關閉');
+        expect(close.getAttribute('aria-label')).toBe('關閉');
     });
 });

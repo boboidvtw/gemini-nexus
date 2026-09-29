@@ -18,14 +18,14 @@ describe('copy button', () => {
         const button = createCopyButton(() => 'copy me');
         const originalIcon = button.innerHTML;
 
-        expect(button.title).toBe('复制内容');
+        expect(button.title).toBe('複製內容');
 
         button.dispatchEvent(new Event('click'));
         await Promise.resolve();
 
         expect(copyToClipboard).toHaveBeenCalledWith('copy me');
         expect(button.innerHTML).not.toBe(originalIcon);
-        expect(button.textContent).toContain('已复制');
+        expect(button.textContent).toContain('已複製');
 
         vi.advanceTimersByTime(2000);
         expect(button.innerHTML).toBe(originalIcon);

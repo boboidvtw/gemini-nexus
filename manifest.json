@@ -27,7 +27,7 @@
         "128": "assets/icons/icon-128.png"
     },
     "action": {
-        "default_title": "Open Gemini Chat",
+        "default_title": "開啟 Gemini 對話",
         "default_icon": {
             "16": "assets/icons/icon-16.png",
             "32": "assets/icons/icon-32.png",
@@ -41,21 +41,21 @@
                 "default": "Alt+G",
                 "mac": "Alt+G"
             },
-            "description": "Open Gemini Nexus Sidebar"
+            "description": "開啟 Gemini Nexus 側邊欄"
         },
         "quick-ask": {
             "suggested_key": {
                 "default": "Alt+Q",
                 "mac": "Alt+Q"
             },
-            "description": "Open Gemini Nexus Quick Ask"
+            "description": "開啟 Gemini Nexus 快速提問"
         },
         "area-ocr": {
             "suggested_key": {
                 "default": "Alt+O",
                 "mac": "Alt+O"
             },
-            "description": "Start Gemini Nexus Area OCR"
+            "description": "啟動 Gemini Nexus 區域 OCR"
         }
     },
     "side_panel": {

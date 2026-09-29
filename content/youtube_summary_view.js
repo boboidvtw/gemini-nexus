@@ -380,7 +380,13 @@
 
         const logo = document.createElement('img');
         logo.className = CLASS_NAMES.logo;
-        logo.src = chrome.runtime.getURL(LOGO_PATH);
+        try {
+            if (typeof chrome !== 'undefined' && chrome.runtime?.getURL) {
+                logo.src = chrome.runtime.getURL(LOGO_PATH);
+            }
+        } catch {
+            // Extension context invalidated
+        }
         logo.alt = '';
         logo.setAttribute('aria-hidden', 'true');
 

@@ -607,4 +607,22 @@ describe('YouTube summary content script', () => {
             warnSpy.mockRestore();
         }
     });
+    it('stops controller and disconnects observer when extension context is invalidated', () => {
+        const dom = createPage(
+            TEST_WATCH_URL,
+            createWatchMetadataHtml(createActionsHtml('<button id=native></button>'))
+        );
+        installScript(dom);
+        const controller = dom.window.GeminiYouTubeSummary.controller;
+
+        expect(getSummaryButton(dom)).not.toBeNull();
+        expect(controller.observer).not.toBeNull();
+
+        // Simulate extension context invalidated (chrome.runtime.id becomes undefined / falsy)
+        dom.window.chrome.runtime.id = '';
+        controller.scheduleSync();
+
+        expect(controller.observer).toBeNull();
+        expect(getSummaryButton(dom)).toBeNull();
+    });
 });

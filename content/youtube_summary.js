@@ -88,11 +88,31 @@
             });
         }
 
+        isContextValid() {
+            try {
+                return Boolean(
+                    typeof chrome !== 'undefined' &&
+                    chrome.runtime &&
+                    (chrome.runtime.id !== undefined ? chrome.runtime.id : chrome.runtime.getURL)
+                );
+            } catch {
+                return false;
+            }
+        }
+
         scheduleSync() {
+            if (!this.isContextValid()) {
+                this.stop();
+                return;
+            }
             if (this.syncScheduled) return;
             this.syncScheduled = true;
             nextFrame(() => {
                 this.syncScheduled = false;
+                if (!this.isContextValid()) {
+                    this.stop();
+                    return;
+                }
                 this.sync();
             });
         }
@@ -261,6 +281,10 @@
         }
 
         sync() {
+            if (!this.isContextValid()) {
+                this.stop();
+                return;
+            }
             const videoUrl = this.getCurrentVideoUrl();
             let button = this.getButton();
 

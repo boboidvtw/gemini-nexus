@@ -1,3 +1,12 @@
+> [!IMPORTANT]
+> ### 🚀 本專案已全面併入 Nomad AI Workspace Monorepo！
+> 本儲存庫已完成歷史使命並封存（Archived），所有後續功能開發、安全性維護與架構升級已全面轉移至統一的單一儲存庫：
+> 👉 **[boboidvtw/nomad-ai-workspace](https://github.com/boboidvtw/nomad-ai-workspace)**
+> 
+> *Notice: This repository is now archived and migrated to the unified Monorepo at [nomad-ai-workspace](https://github.com/boboidvtw/nomad-ai-workspace).*
+
+---
+
 <p align="center">
   <a href="./README.md">English</a> | <a href="./README.zh-CN.md">中文</a>
 </p>
